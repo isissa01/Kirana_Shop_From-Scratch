@@ -323,7 +323,9 @@ function createProduct(event){
     generateProducts()
     console.log(product)
 
+
     document.querySelector(".create-product-container").style.display = "none";
+    event.target.reset()
 }
 
 cancelButton = document.querySelector(".cancel");
