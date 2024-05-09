@@ -108,7 +108,7 @@ let productList = [apple, banana , strawberry]
 
 
 const productsElement = document.querySelector("#products");
-productsElement.innerHTML ="";
+
 
 const shoppingCartElement = document.querySelector("#shopping-cart");
 shoppingCartElement.innerHTML = "";
@@ -139,38 +139,43 @@ clearCartButton.addEventListener("click", ev =>{
 })
 
 
-productList.map(product =>{
-    // console.log(product)
+const generateProducts = () => {
+    productsElement.innerHTML ="";
+    productList.map(product =>{
+        // console.log(product)
+        
+        let productElement = document.createElement("div");
+        productElement.className = "product card";
+        let imageElement = document.createElement("img");
+        imageElement.src = product.image;
+        imageElement.className = "product-image";
+        let h3Element = document.createElement('h3');
+        h3Element.innerText = product.name;
+        h3Element.className = "product-name";
+        let priceElement = document.createElement('p');
+        priceElement.className = "product-price";
+        priceElement.innerText = `Price: $${product.price.toFixed(2)}`;
+        let addButton = document.createElement('button');
+        addButton.className="add-to-cart";
+        addButton.innerText = "Add To Cart";
+        addButton.addEventListener("click",ev =>{
+            cart.addProductToCart( product)
+        });
     
-    let productElement = document.createElement("div");
-    productElement.className = "product card";
-    let imageElement = document.createElement("img");
-    imageElement.src = product.image;
-    imageElement.className = "product-image";
-    let h3Element = document.createElement('h3');
-    h3Element.innerText = product.name;
-    h3Element.className = "product-name";
-    let priceElement = document.createElement('p');
-    priceElement.className = "product-price";
-    priceElement.innerText = `Price: $${product.price.toFixed(2)}`;
-    let addButton = document.createElement('button');
-    addButton.className="add-to-cart";
-    addButton.innerText = "Add To Cart";
-    addButton.addEventListener("click",ev =>{
-        cart.addProductToCart( product)
-    });
-
-    productElement.appendChild(imageElement);
-    productElement.appendChild(h3Element);
-    productElement.appendChild(priceElement);
-    productElement.appendChild(addButton);
+        productElement.appendChild(imageElement);
+        productElement.appendChild(h3Element);
+        productElement.appendChild(priceElement);
+        productElement.appendChild(addButton);
+    
+    
+        // console.log(productsElement)
+    
+        productsElement.appendChild(productElement)
+    })
+}
 
 
-    // console.log(productsElement)
-
-    productsElement.appendChild(productElement)
-})
-
+generateProducts()
 
 function updateShoppingCart(){
     shoppingCartElement.innerHTML ="";
@@ -302,7 +307,23 @@ function checkBalance(){
     }
 }
 function createProduct(event){
+    // document.querySelector(".create-product-container").style.display = "none";
+    const data = event.target.elements;
     console.log(event.target.elements)
+    const imgUrl = URL.createObjectURL(data.image.files[0])
+    const product = {
+        name: data.productName.value,
+        productId: data.productId.value,
+        price: Number( data.productPrice.value),
+        image: imgUrl
+    }
+
+    const newProduct = new Product(product.productId, product.name, product.price, product.image)
+    productList.push(newProduct)
+    generateProducts()
+    console.log(product)
+
+    document.querySelector(".create-product-container").style.display = "none";
 }
 
 cancelButton = document.querySelector(".cancel");
