@@ -1,0 +1,298 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, Roboto, sans-serif;
+}
+
+.container{
+    display: grid;
+
+    grid-template-columns: 1fr 250px;
+    grid-template-areas: 
+    "hd hd"
+    "main sidebar"
+    ;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    max-width: 950px;
+    margin: auto;
+
+}
+.main{
+    display:  grid;
+    padding: 10px;
+    
+}
+
+.header{
+    grid-area: hd;
+    text-align: center;
+    margin-top: 20px;
+}
+.main{
+    grid-area: main;
+    padding: 20px;
+}
+.page-title{
+    font-size: 1.8em;
+    margin: 10px 0;
+}
+.sidebar{
+    grid-area: sidebar;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+.section-title{
+    font-size: 1.2em;
+    margin: 20px 0 10px;
+}
+
+.products {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product  {
+    flex: 21%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    /* width: 30%; */
+   
+    
+
+
+}
+.product:hover{
+    box-shadow: 5px 5px 10px 0 #bbb;
+}
+
+.product-image{
+    width: 100%;
+}
+.product-name{
+    font-size: .8em;
+    margin:  5px 0px;
+}
+p, label{
+    color: #666;
+    font-size: 0.8em;
+    margin: 5px 0px;;
+}
+
+.add-to-cart{
+    outline: none;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background-color: white;
+    color: #888;
+    cursor: pointer;
+    margin: 0px;
+}
+.add-to-cart:focus{
+    outline: none;
+}
+.add-to-cart:hover{
+    color: #666;
+    border-color: #bbb;
+    background-color: white;
+
+}
+
+button{
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #ddd;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    background-color: white;
+}
+button:focus{
+    outline: none;
+}
+button:hover{
+    color: white;
+    background-color: black;
+}
+
+/* shopping cart */
+
+.shopping-cart{
+    display: flex;
+    gap: 10px;
+    /* padding: 10px; */
+    flex-wrap: wrap;
+}
+.cart-product{
+    flex: 21%;
+    padding: 20px;
+    border: 1px solid #dedede;
+}
+.cart-item-buttons{
+    display: flex;
+    gap: 5px;
+}
+.cart-item-buttons button{
+    
+    background-color: transparent;
+    outline: none;
+    
+    padding: 5px 10px;
+}
+.cart-item-buttons button:hover{
+    background-color: black;
+    color: white;
+}
+/* checkout */
+
+.receipt{
+    font-size: 1em;
+    margin: 10px 0;;
+}
+.checkout{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.checkout-input-container{
+    display: flex;
+    gap: 5px;
+    /* flex-wrap: wrap; */
+}
+.checkout-input-container button{
+    padding: 5px 10px;
+    font-size: 0.7em;
+
+}
+
+
+input{
+    border: 1px solid #ddd;
+    padding: 5px;
+
+}
+input:focus{
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/* .checkout-p{
+    margin: 10px 0;
+} */
+
+.clear-cart{
+    padding: 10px 20px;
+    background-color: white;
+    color: #666;
+    
+}
+.clear-cart:hover{
+    color: white;
+    background-color: black;
+}
+
+.pay-more{
+    display: none;
+}
+.error{
+    color: red;
+    font-size: 0.7em;
+
+    
+}
+
+
+/* create a product */
+.create-product-container{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(150,150,150, 0.5);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.create-product-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 30px 60px;
+    color: white;
+   
+    /* width: 80%; */
+
+}
+.content{
+    width: 500px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: 10px; */
+}
+.form-label{
+    color: white;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-buttons{
+    display:  flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.form-buttons button{
+    padding: 10px 20px;
+    border: none;
+
+}
+.cancel{
+    color: white;
+    background-color: red;
+}
+.create-product{
+    color: white;
+    background: blue;
+}
+
+.cancel:hover{
+    color: red;
+    background-color: white;
+    border: 1px solid red;
+}
+
+.create-product:hover{
+    color: blue;
+    background-color: white;
+    border: 1px solid blue;
+}
+
+.section-title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
